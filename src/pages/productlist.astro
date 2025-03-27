@@ -1,0 +1,27 @@
+---
+//@ts-nocheck
+import Layout from "../layouts/Layout.astro";
+const fashionUrl = "https://kea-alt-del.dk/t7/api/products";
+const data = await fetch(fashionUrl).then((res) => res.json());
+console.log(data);
+import ProductCard from "../components/ProductCard.astro";
+---
+
+<Layout>
+  <h1>Apparel</h1>
+  <main>
+    {data.map((product) => <ProductCard {product} />)}
+  </main>
+</Layout>
+
+<style>
+
+
+
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px 15px;
+}
+</style>
